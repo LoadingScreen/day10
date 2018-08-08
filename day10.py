@@ -26,7 +26,10 @@ interventions = [
 ["Go to bed by 10"],
 ["Be less reserved in conversation"],
 ["Text a friend after eating", "Kill two birbs with 1 Stone!"],
-["Shower talks", "they're so good man"]
+["Shower talks", "they're so good man"],
+["Eat few carbs"],
+["5 hour feeding window"],
+["Phone a friend for 30 minutes"]
 ]
 
 # Put such an intervention in the calendar for 10 days
