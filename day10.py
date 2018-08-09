@@ -50,9 +50,11 @@ for i in range(1,n+1):
     event = {
       'summary': "Day %s/%s: %s" %(i, n, summary),
       'description': intervention[-1],
-      'start': {'dateTime':(startingDay+timedelta(days=i, hours=10)).isoformat()+'Z'},
+      'start': {'dateTime':(startingDay+timedelta(days=i, hours=10)).isoformat()+'Z',
+      'timeZone': 'America/Los_Angeles'},
       'end': {'dateTime': (startingDay+timedelta(
-      days=i, hours=10, minutes=30)).isoformat()+"Z"},
+      days=i, hours=10, minutes=30)).isoformat(),
+      'timeZone': 'America/Los_Angeles'},
       'reminders': {
         'useDefault': False,
         'overrides': [
