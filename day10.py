@@ -40,7 +40,7 @@ if len(sys.argv) > 1:
     delay = int(sys.argv[1])
 else:
     delay = 0
-for i in range(1,4):
+for i in range(1,6):
     # startingDay = datetime.datetime.today() + timedelta(days=delay)
     startingDay = datetime.datetime.now().replace(hour=0, minute=0, second=0)
 
@@ -48,7 +48,8 @@ for i in range(1,4):
       'summary': "Day %s/10: %s" %(i,summary),
       'description': intervention[-1],
       'start': {'dateTime':(startingDay+timedelta(days=i, hours=10)).isoformat()+'Z'},
-      'end': {'dateTime': (startingDay+timedelta(days=i, hours=22)).isoformat()+"Z"}, #(startingDay+timedelta(days=i)).isoformat(),
+      'end': {'dateTime': (startingDay+timedelta(
+      days=i, hours=10, minutes=30)).isoformat()+"Z"},
       'reminders': {
         'useDefault': False,
         'overrides': [
