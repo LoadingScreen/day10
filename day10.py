@@ -16,8 +16,6 @@ if not creds or creds.invalid:
     creds = tools.run_flow(flow, store)
 service = build('calendar', 'v3', http=creds.authorize(Http()))
 
-# Call the Calendar API
-now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
 
 interventions = [
 ["Avoid interrupting people"],
@@ -32,20 +30,25 @@ interventions = [
 ["Phone a friend for 30 minutes"]
 ]
 
-# Put such an intervention in the calendar for 10 days
+# user says how many days they want this intervention to last
+n = int(raw_input("How many days long?\n>> "))
+
+# Put such an intervention in the calendar for n days
 print('Adding a randomly selected intervention...')
 intervention = interventions[random.randint(0,len(interventions))]
 summary = intervention[0]
+# calendar events can start in the future
 if len(sys.argv) > 1:
     delay = int(sys.argv[1])
 else:
     delay = 0
-for i in range(1,6):
+
+for i in range(1,n+1):
     # startingDay = datetime.datetime.today() + timedelta(days=delay)
     startingDay = datetime.datetime.now().replace(hour=0, minute=0, second=0)
 
     event = {
-      'summary': "Day %s/10: %s" %(i,summary),
+      'summary': "Day %s/%s: %s" %(i, n, summary),
       'description': intervention[-1],
       'start': {'dateTime':(startingDay+timedelta(days=i, hours=10)).isoformat()+'Z'},
       'end': {'dateTime': (startingDay+timedelta(
