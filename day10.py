@@ -8,6 +8,7 @@ import random
 import sys
 
 # Setup the Calendar API
+print('Accessing calendar...')
 SCOPES = 'https://www.googleapis.com/auth/calendar'
 store = file.Storage('credentials.json')
 creds = store.get()
@@ -35,7 +36,7 @@ n = int(raw_input("How many days long?\n>> "))
 
 # Put such an intervention in the calendar for n days
 print('Adding a randomly selected intervention...')
-intervention = interventions[random.randint(0,len(interventions))]
+intervention = interventions[random.randint(0,len(interventions)-1)]
 summary = intervention[0]
 # calendar events can start in the future
 if len(sys.argv) > 1:
